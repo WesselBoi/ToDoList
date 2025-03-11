@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { CircleX, ChevronDown, ChevronUp, CirclePlus } from "lucide-react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import { BackgroundBeamsWithCollision } from "./components/ui/background-beams-with-collision";
 
@@ -17,7 +20,16 @@ function App() {
       setNewTask("");
     }
     else{
-      alert("Please enter a task");
+      // alert("Please enter a task");
+      toast.error("Please enter a task", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -36,7 +48,16 @@ function App() {
       setTasks(updatedTasks);
     }
     else{
-      alert("This task is already at the top of the list");
+      // alert("This task is already at the top of the list");
+      toast.error("This task is already at the top of the list", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
     }
   }
 
@@ -50,7 +71,16 @@ function App() {
       setTasks(updatedTasks);
     }
     else{
-      alert("This task is already at the bottom of the list");
+      // alert("This task is already at the bottom of the list");
+      toast.error("This task is already at the bottom of the list", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
     }
   }
 
@@ -85,9 +115,10 @@ function App() {
               />
               <button
                 onClick={addTask}
-                className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors"
+                className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors cursor-pointer"
               >
                 <CirclePlus className="w-5 h-5" />
+                <ToastContainer />
               </button>
             </div>
 
@@ -110,6 +141,7 @@ function App() {
                         title="Move Up"
                       >
                         <ChevronUp className="w-5 h-5" />
+                        <ToastContainer />
                       </button>
                       <button
                         onClick={() => moveTaskDown(index)}
@@ -117,6 +149,7 @@ function App() {
                         title="Move Down"
                       >
                         <ChevronDown className="w-5 h-5" />
+                        <ToastContainer />
                       </button>
                       <button
                         onClick={() => deleteTask(index)}
