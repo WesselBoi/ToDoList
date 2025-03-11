@@ -16,6 +16,9 @@ function App() {
       setTasks([...tasks, newTask]);
       setNewTask("");
     }
+    else{
+      alert("Please enter a task");
+    }
   }
 
   function deleteTask(index) {
@@ -32,6 +35,9 @@ function App() {
       ];
       setTasks(updatedTasks);
     }
+    else{
+      alert("This task is already at the top of the list");
+    }
   }
 
   function moveTaskDown(index) {
@@ -42,6 +48,9 @@ function App() {
         updatedTasks[index],
       ];
       setTasks(updatedTasks);
+    }
+    else{
+      alert("This task is already at the bottom of the list");
     }
   }
 
@@ -54,12 +63,17 @@ function App() {
   return (
     <BackgroundBeamsWithCollision>
       <div className="relative z-10 container mx-auto max-w-md px-4">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="bg-blue-600 px-6 py-4">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="bg-blue-600 px-4 py-4">
+            <div className="flex flex-row items-center gap-2 pb-6">
+              <div className="h-3 w-3 bg-red-400 rounded-4xl"></div>
+              <div className="h-3 w-3 bg-yellow-400 rounded-4xl"></div>
+              <div className="h-3 w-3 bg-green-400 rounded-4xl"></div>
+            </div>
             <h1 className="text-2xl font-bold text-white">My Tasks</h1>
           </div>
 
-          <div className="p-6">
+          <div className="p-6 bg-cyan-100/20">
             <div className="flex mb-6">
               <input
                 value={newTask}
